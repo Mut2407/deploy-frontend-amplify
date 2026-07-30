@@ -104,6 +104,13 @@ export interface FinancialRatios {
   profit_growth: number;
   market_cap: number;
   market_equity_to_debt: number;
+  // Market & Technical Indicators
+  sharpe_ratio: number;
+  rsi_14: number;
+  macd: number;
+  macd_signal: number;
+  adx_14: number;
+  cci_14: number;
 }
 
 export interface RuleDistressCheck {
