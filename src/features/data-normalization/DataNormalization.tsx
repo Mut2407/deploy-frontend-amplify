@@ -1,21 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
-  CheckSquare,
   Sliders,
   AlertOctagon,
   FileCheck2,
   ListTree,
   Play,
   Plus,
-  RefreshCw,
   Info,
   CheckCircle2,
   AlertTriangle,
-  XCircle,
   Loader2,
-  Database,
-  Filter,
 } from 'lucide-react';
 import { getMetricMappings, getDataQualityReport, runDataNormalization } from '../../services/api';
 import type { MetricMappingRule, DataQualityReport } from '../../types';
@@ -148,6 +143,12 @@ export const DataNormalization: React.FC = () => {
     queryKey: ['metric-mappings'],
     queryFn: getMetricMappings,
   });
+
+  React.useEffect(() => {
+    if (apiMappings?.data && Array.isArray(apiMappings.data)) {
+      setMappings(apiMappings.data);
+    }
+  }, [apiMappings]);
 
   const { data: apiQualityReport } = useQuery({
     queryKey: ['quality-report'],

@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import {
   Building2,
   Search,
-  ShieldAlert,
   CheckCircle2,
   AlertTriangle,
   RefreshCw,

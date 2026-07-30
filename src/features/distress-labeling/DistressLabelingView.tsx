@@ -1,23 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
-  ShieldAlert,
   Building2,
   CheckCircle2,
   AlertTriangle,
-  XCircle,
   Play,
-  RefreshCw,
-  Info,
   ChevronDown,
   Loader2,
   Scale,
   Zap,
   Sliders,
   FileText,
-  PieChart,
 } from 'lucide-react';
-import { getCompanies, getFinancialReport, getDistressLabels, runDistressLabelingEngine } from '../../services/api';
+import { getCompanies, getDistressLabels, runDistressLabelingEngine } from '../../services/api';
 import type { Company, DistressLabelResult } from '../../types';
 
 // Mock Labeling Results for Vietnamese listed companies (2019-2024)
@@ -112,13 +107,6 @@ export const DistressLabelingView: React.FC = () => {
     }
     return list;
   }, [companiesData]);
-
-  // Fetch Req 2 financial report to confirm sync
-  const { data: reportData } = useQuery({
-    queryKey: ['financial-report-sync', selectedTicker],
-    queryFn: () => getFinancialReport(selectedTicker, 'YEARLY'),
-    enabled: !!selectedTicker,
-  });
 
   // Fetch Distress Labels
   const { data: apiLabels, refetch } = useQuery({

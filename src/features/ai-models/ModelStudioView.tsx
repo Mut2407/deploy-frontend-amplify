@@ -18,15 +18,11 @@ import {
   Sliders,
   Calendar,
   CheckCircle2,
-  AlertCircle,
   TrendingUp,
-  Award,
   Layers,
-  Activity,
   BarChart3,
   Loader2,
   Info,
-  Zap,
 } from 'lucide-react';
 import { trainModel, getModelEvaluation } from '../../services/api';
 import type { ModelTrainingResult } from '../../types';
@@ -158,7 +154,7 @@ export const ModelStudioView: React.FC = () => {
   const [trainEndYear, setTrainEndYear] = useState(2022);
   const [testStartYear, setTestStartYear] = useState(2023);
   const [testEndYear, setTestEndYear] = useState(2024);
-  const [handleImbalance, setHandleImbalance] = useState(true);
+  const [handleImbalance] = useState(true);
   const [isTraining, setIsTraining] = useState(false);
   const [trainingSuccess, setTrainingSuccess] = useState(false);
 
@@ -444,7 +440,7 @@ export const ModelStudioView: React.FC = () => {
               <YAxis dataKey="display_name" type="category" tick={{ fontSize: 11, fill: '#334155' }} />
               <Tooltip formatter={(val: any) => [(Number(val) * 100).toFixed(1) + '%', 'Tầm quan trọng']} />
               <Bar dataKey="importance" radius={[0, 4, 4, 0]}>
-                {modelResult?.feature_importance.map((entry, index) => (
+                {modelResult?.feature_importance.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={index === 0 ? '#4f46e5' : index < 3 ? '#6366f1' : '#a5b4fc'} />
                 ))}
               </Bar>

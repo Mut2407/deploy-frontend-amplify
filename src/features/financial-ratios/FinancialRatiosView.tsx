@@ -8,8 +8,6 @@ import {
   Scale,
   Zap,
   ChevronDown,
-  RefreshCw,
-  Info,
   Loader2,
   CheckCircle2,
   BarChart2,
@@ -72,7 +70,7 @@ export const FinancialRatiosView: React.FC = () => {
   }, [companiesData]);
 
   // Fetch ratio data
-  const { data: apiRatios, isLoading: isLoadingRatios, refetch } = useQuery({
+  const { data: apiRatios, refetch } = useQuery({
     queryKey: ['financial-ratios', selectedTicker],
     queryFn: () => getFinancialRatios(selectedTicker),
     enabled: !!selectedTicker,

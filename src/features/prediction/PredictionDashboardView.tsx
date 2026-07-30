@@ -10,12 +10,9 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import {
-  ShieldAlert,
   Building2,
   AlertTriangle,
   CheckCircle2,
-  TrendingDown,
-  TrendingUp,
   ChevronDown,
   Activity,
   Sliders,
